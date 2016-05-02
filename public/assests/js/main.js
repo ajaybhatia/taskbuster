@@ -11,3 +11,22 @@ $(function(){
 		}
 	});
 });
+
+$(document).ready(function() {
+    $(".close").on("click", function() {
+        var button = $(this);
+        var id = button.attr("data-target");
+        var token = button.data('token');
+
+        $.ajax({
+            url: '/delete/' + id,
+            data: {'_token': token},
+            type: 'DELETE',
+            cache: false,
+            async: true,
+            success: function(result) {
+                button.parent().parent().remove();
+            }
+        });
+    });
+});
