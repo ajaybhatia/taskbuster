@@ -37,4 +37,20 @@ class HomeController extends Controller
     {
         Task::destroy($task);
     }
+
+    /**
+     * Create a task
+     */
+    public function create(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|unique:tasks|max:255',
+        ]);
+
+        $task = new Task();
+        $task->name = $request->name;
+        $task->save();
+
+        return redirect('/home');
+    }
 }

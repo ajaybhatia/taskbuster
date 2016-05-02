@@ -23,3 +23,8 @@ Route::get('/home', 'HomeController@index');
 
 Route::delete('/delete/{task}', 'HomeController@delete');
 
+Route::post('/create', [
+	'uses' => 'HomeController@create',
+	'as' => 'add'
+]);
+
