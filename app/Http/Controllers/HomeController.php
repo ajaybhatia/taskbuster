@@ -29,4 +29,12 @@ class HomeController extends Controller
         $tasks = Task::all();
         return view('home', ['tasks' => $tasks]);
     }
+
+    /**
+     * Delete a task
+     */
+    public function delete(Request $request, $task)
+    {
+        Task::destroy($task);
+    }
 }
