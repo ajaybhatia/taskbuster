@@ -10,7 +10,12 @@
         <div class="col-md-10 col-md-offset-1">
             @foreach($tasks as $task)
             <div class="panel panel-default">
-                <div class="panel-heading">{{ $task->name }}</div>
+                <div id="{{ $task->id }}" class="panel-heading">
+                    {{ $task->name }}
+                    <button type="button" class="close" data-target="{{ $task->id }}" data-dismiss="alert" data-token="{{ csrf_token() }}">
+                        <span aria-hidden="true"><i class="fa fa-times"></i></span><span class="sr-only">Close</span>
+                    </button>
+                </div>
 
                 <div class="panel-body">
                     {{ $task->description }}
