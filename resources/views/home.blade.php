@@ -50,7 +50,7 @@
             <div id="show-{{ $task->id }}" class="panel panel-default show-panel">
                 <div class="panel-heading">
                     {{ $task->name }}
-                    <button type="button" class="edit" data-target="{{ $task->id }}" data-dismiss="alert" data-token="{{ csrf_token() }}" >
+                    <button type="button" class="edit pull-left" data-target="{{ $task->id }}" data-dismiss="alert" data-token="{{ csrf_token() }}" >
                         <span aria-hidden="true"><i class="fa fa-pencil"></i></span><span class="sr-only">Edit</span>
                     </button>
                     <button type="button" class="close delete" data-target="{{ $task->id }}" data-dismiss="alert" data-token="{{ csrf_token() }}" >
