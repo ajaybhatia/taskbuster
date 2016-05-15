@@ -26,7 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $tasks = Task::all();
+        $tasks = Task::all()->where('user_id', \Auth::user()->id);
         return view('home', ['tasks' => $tasks]);
     }
 
@@ -48,9 +48,12 @@ class HomeController extends Controller
             'description' => 'required',
         ]);
 
+        $user = \Auth::user();
+
         $task = new Task();
         $task->name = $request->name;
         $task->description = $request->description;
+        $task->user_id = $user->id;
         $task->save();
 
         return redirect('/home');
