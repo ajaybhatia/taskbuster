@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="panel-body">
-                    <form action="{{ url('create') }}" method="POST" role="form">
+                    <form action="{{ route('add') }}" method="POST" role="form">
                         {!! csrf_field() !!}
                         <div class="form-group">
                             <label for="name">Title:</label>
@@ -47,10 +47,13 @@
 
             <!-- display task(s) -->
             @foreach($tasks as $task)
-            <div class="panel panel-default">
-                <div id="{{ $task->id }}" class="panel-heading">
+            <div id="show-{{ $task->id }}" class="panel panel-default show-panel">
+                <div class="panel-heading">
                     {{ $task->name }}
-                    <button type="button" class="close" data-target="{{ $task->id }}" data-dismiss="alert" data-token="{{ csrf_token() }}"  >
+                    <button type="button" class="edit" data-target="{{ $task->id }}" data-dismiss="alert" data-token="{{ csrf_token() }}" >
+                        <span aria-hidden="true"><i class="fa fa-pencil"></i></span><span class="sr-only">Edit</span>
+                    </button>
+                    <button type="button" class="close delete" data-target="{{ $task->id }}" data-dismiss="alert" data-token="{{ csrf_token() }}" >
                         <span aria-hidden="true"><i class="fa fa-times"></i></span><span class="sr-only">Close</span>
                     </button>
                 </div>
@@ -59,6 +62,36 @@
                     {{ $task->description }}
                 </div>
             </div>
+
+            <div id="edit-{{ $task->id }}" class="panel panel-primary edit-panel">
+                <div class="panel-heading">
+                    Edit a Task
+                    <button type="button" class="close exit" data-target="{{ $task->id }}" data-dismiss="alert" data-token="{{ csrf_token() }}" >
+                        <span aria-hidden="true"><i class="fa fa-times"></i></span><span class="sr-only">Close</span>
+                    </button>
+                </div>
+
+                <div class="panel-body">
+                    <form action="{{ route('edit', ['task' => $task]) }}" method="POST" role="form">
+                        {!! csrf_field() !!}
+                        <div class="form-group">
+                            <label for="name">Title:</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Task Title" value="{{ $task->name }}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Description:</label>
+                            <textarea class="form-control" id="description" name="description" placeholder="Task Description">{{ $task->description }}</textarea>
+                        </div>
+                    
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-plus"></i>
+                            Update Task
+                        </button>
+                    </form>
+                </div>
+            </div>
+
             @endforeach
             <!-- display task(s) -->
         </div>

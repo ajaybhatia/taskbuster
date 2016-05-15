@@ -13,7 +13,7 @@ $(function(){
 });
 
 $(document).ready(function() {
-    $(".close").on("click", function() {
+    $(".delete").on("click", function() {
         var agree = confirm("Are you sure?");
         if (agree) {
             var button = $(this);
@@ -34,4 +34,20 @@ $(document).ready(function() {
 
         return false;
     });
+
+    $(".edit").on("click", function() {
+        $id = $(this).attr('data-target');
+        $edit_id = "edit-" + $id;
+        $show_id = "show-" + $id;
+        $("#" + $edit_id).css('display', 'block');
+        $("#" + $show_id).css('display', 'none');
+    });
+
+    $(".exit").on("click", function() {
+        $id = $(this).attr('data-target');
+        $edit_id = "edit-" + $id;
+        $show_id = "show-" + $id;
+        $("#" + $edit_id).css('display', 'none');
+        $("#" + $show_id).css('display', 'block');
+    });    
 });

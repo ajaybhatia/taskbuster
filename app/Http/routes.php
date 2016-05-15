@@ -26,3 +26,7 @@ Route::post('/create', [
 	'as' => 'add'
 ]);
 
+Route::post('/task/{task}', [
+	'uses' => 'HomeController@edit',
+	'as' => 'edit'
+]);

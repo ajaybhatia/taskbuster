@@ -55,4 +55,16 @@ class HomeController extends Controller
 
         return redirect('/home');
     }
+
+    /**
+     * Edit a task
+     */
+    public function edit(Request $request, Task $task)
+    {
+        $task->name = $request->name;
+        $task->description = $request->description;
+        $task->save();
+
+        return redirect('/home');
+    }
 }
