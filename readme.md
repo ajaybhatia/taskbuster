@@ -2,6 +2,10 @@
 
 Taskbuster app helps in managing tasks lists.
 
+## Todo
+
+Make it multi-user.
+
 ## Official Documentation
 
 In progress.
