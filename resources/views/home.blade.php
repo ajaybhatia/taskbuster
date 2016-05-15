@@ -63,7 +63,7 @@
                 </div>
             </div>
 
-            <div id="edit-{{ $task->id }}" class="panel panel-primary edit-panel">
+            <div id="edit-{{ $task->id }}" class="panel panel-success edit-panel">
                 <div class="panel-heading">
                     Edit a Task
                     <button type="button" class="close exit" data-target="{{ $task->id }}" data-dismiss="alert" data-token="{{ csrf_token() }}" >
@@ -84,7 +84,7 @@
                             <textarea class="form-control" id="description" name="description" placeholder="Task Description">{{ $task->description }}</textarea>
                         </div>
                     
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-success">
                             <i class="fa fa-plus"></i>
                             Update Task
                         </button>
