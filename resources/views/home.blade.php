@@ -30,6 +30,11 @@
                             <label for="name">Title:</label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="Task Title">
                         </div>
+
+                        <div class="form-group">
+                            <label for="description">Description:</label>
+                            <textarea class="form-control" id="description" name="description" placeholder="Task Description"></textarea>
+                        </div>
                     
                         <button type="submit" class="btn btn-primary">
                             <i class="fa fa-plus"></i>

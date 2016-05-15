@@ -45,10 +45,12 @@ class HomeController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|unique:tasks|max:255',
+            'description' => 'required',
         ]);
 
         $task = new Task();
         $task->name = $request->name;
+        $task->description = $request->description;
         $task->save();
 
         return redirect('/home');
